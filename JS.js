@@ -22,6 +22,16 @@ function generatePassword() {
   const includeNumeric = numericCheckbox.checked;
   const includeSpecial = specialCheckbox.checked;
 
+  if (!includeLowercase && !includeUppercase && !includeNumeric && !includeSpecial) {
+    alert('Please choose at least one option.');
+    return; // Stop generating password if no options are selected
+  }
+
+  if (length === '') {
+    alert('Please enter a password length.');
+    return; // Stop generating password if no length is entered
+  }
+
   let charSet = '';
 
   if (includeLowercase) {
@@ -52,8 +62,8 @@ function generatePassword() {
   }
 
   console.log('Generated Password:', password);
-  passwordDisplay.value = password;
+  alert('Your password is: ' + password);
 }
 
-// Event listeners
+// Event listener for generate button
 generateBtn.addEventListener('click', generatePassword);
