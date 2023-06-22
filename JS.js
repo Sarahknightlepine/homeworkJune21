@@ -1,9 +1,4 @@
-const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
-const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const numericChars = '0123456789';
-const specialChars = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
-
-
+// Generate password
 function generatePassword() {
   const lengthInput = document.getElementById('length');
   const lowercaseCheckbox = document.getElementById('lowercase');
@@ -25,35 +20,36 @@ function generatePassword() {
   const includeSpecial = specialCheckbox.checked;
 
   let charSet = '';
+  let password = '';
 
+  // Define character sets based on selected checkboxes
   if (includeLowercase) {
-    charSet += lowercaseLetters;
-    console.log('Lowercase characters included');
+    charSet += 'abcdefghijklmnopqrstuvwxyz';
   }
 
   if (includeUppercase) {
-    charSet += uppercaseLetters;
-    console.log('Uppercase characters included');
+    charSet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   }
 
   if (includeNumeric) {
-    charSet += numericChars;
-    console.log('Numeric characters included');
+    charSet += '0123456789';
   }
 
   if (includeSpecial) {
-    charSet += specialChars;
-    console.log('Special characters included');
+    charSet += '!@#$%^&*()_+~`|}{[]\\\:;?><,./-=';
   }
 
-  let password = '';
+  // Check if at least one character set is selected
+  if (charSet.length === 0) {
+    alert('Please select at least one character set.');
+    return; // Stop generating the password
+  }
 
   for (let i = 0; i < length; i++) {
     const randomIndex = Math.floor(Math.random() * charSet.length);
     password += charSet[randomIndex];
   }
 
-  
   console.log('Generated Password:', password);
   alert('Your password is: ' + password);
 }
@@ -62,3 +58,24 @@ function generatePassword() {
 const generateButton = document.getElementById('generate-btn');
 generateButton.addEventListener('click', generatePassword);
 
+// Checkbox change event listeners
+const lowercaseCheckbox = document.getElementById('lowercase');
+const uppercaseCheckbox = document.getElementById('uppercase');
+const numericCheckbox = document.getElementById('numeric');
+const specialCheckbox = document.getElementById('special');
+
+lowercaseCheckbox.addEventListener('change', function() {
+  console.log('Lowercase checkbox:', this.checked);
+});
+
+uppercaseCheckbox.addEventListener('change', function() {
+  console.log('Uppercase checkbox:', this.checked);
+});
+
+numericCheckbox.addEventListener('change', function() {
+  console.log('Numeric checkbox:', this.checked);
+});
+
+specialCheckbox.addEventListener('change', function() {
+  console.log('Special checkbox:', this.checked);
+});
