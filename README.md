@@ -4,7 +4,7 @@ Generating a random password based on specifications by the user on the type of 
 Team Members
 Sarah Lepine
 Andrew (Tutoring)
-Mark G. (Wiremock Team)
+Mark G. (Engineering Team) 
 
 User Story
 As an employee with access to sensitive data, I want to randomly generate a password that meets certain criteria so that I can create a strong password that provides greater security.
@@ -31,5 +31,5 @@ JavaScript
 
 
 Contributions
-I Sarah Lepine, worked with Andrew from Tutoring, and Mark G. from the Wiremock team to create the code and push it to git hub
+I Sarah Lepine, worked with Andrew from Tutoring, and Mark G. from the engineering team to create the code and push it to git hub
 
