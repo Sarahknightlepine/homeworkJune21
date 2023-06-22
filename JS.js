@@ -1,36 +1,17 @@
-// Get DOM elements
-const passwordDisplay = document.getElementById('password');
-const copyBtn = document.getElementById('copy-btn');
-const lengthInput = document.getElementById('length');
-const lowercaseCheckbox = document.getElementById('lowercase');
-const uppercaseCheckbox = document.getElementById('uppercase');
-const numericCheckbox = document.getElementById('numeric');
-const specialCheckbox = document.getElementById('special');
-const generateBtn = document.getElementById('generate-btn');
-
-// Character sets
-const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
-const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const numericChars = '0123456789';
-const specialChars = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
-
 // Generate password
 function generatePassword() {
   const length = lengthInput.value;
+
+  // Check if the length is within the valid range
+  if (length < 8 || length > 128) {
+    alert('Please choose a password length between 8 and 128 characters.');
+    return; // Stop generating the password
+  }
+
   const includeLowercase = lowercaseCheckbox.checked;
   const includeUppercase = uppercaseCheckbox.checked;
   const includeNumeric = numericCheckbox.checked;
   const includeSpecial = specialCheckbox.checked;
-
-  if (!includeLowercase && !includeUppercase && !includeNumeric && !includeSpecial) {
-    alert('Please choose at least one option.');
-    return; // Stop generating password if no options are selected
-  }
-
-  if (length === '') {
-    alert('Please enter a password length.');
-    return; // Stop generating password if no length is entered
-  }
 
   let charSet = '';
 
@@ -64,6 +45,3 @@ function generatePassword() {
   console.log('Generated Password:', password);
   alert('Your password is: ' + password);
 }
-
-// Event listener for generate button
-generateBtn.addEventListener('click', generatePassword);
