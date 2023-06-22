@@ -1,5 +1,11 @@
 // Generate password
 function generatePassword() {
+  const lengthInput = document.getElementById('length');
+  const lowercaseCheckbox = document.getElementById('lowercase');
+  const uppercaseCheckbox = document.getElementById('uppercase');
+  const numericCheckbox = document.getElementById('numeric');
+  const specialCheckbox = document.getElementById('special');
+
   const length = lengthInput.value;
 
   // Check if the length is within the valid range
@@ -45,3 +51,7 @@ function generatePassword() {
   console.log('Generated Password:', password);
   alert('Your password is: ' + password);
 }
+
+// Button click event listener
+const generateButton = document.getElementById('generate-btn');
+generateButton.addEventListener('click', generatePassword);

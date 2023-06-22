@@ -1,3 +1,4 @@
+/* CSS comments should start with /* and end with */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -50,34 +51,4 @@ h1 {
   border-radius: 5px;
   color: #333333;
   font-weight: bold;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
-
-.criteria {
-  margin-bottom: 20px;
-}
-
-.criteria label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 18px;
-  color: #333333;
-}
-
-.checkbox-group label {
-  display: block;
-  font-size: 16px;
-  color: #333333;
-}
-
-#generate-btn {
-  padding: 10px;
-  background-color: #FFDD57;
-  border: none;
-  border-radius: 5px;
-  color: #333333;
-  font-weight: bold;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
+  box-shadow: 0px 0px 5
