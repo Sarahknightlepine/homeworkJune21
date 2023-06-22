@@ -1,4 +1,9 @@
-// Generate password
+const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const numericChars = '0123456789';
+const specialChars = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+
+
 function generatePassword() {
   const lengthInput = document.getElementById('length');
   const lowercaseCheckbox = document.getElementById('lowercase');
@@ -48,6 +53,7 @@ function generatePassword() {
     password += charSet[randomIndex];
   }
 
+  
   console.log('Generated Password:', password);
   alert('Your password is: ' + password);
 }
@@ -55,3 +61,4 @@ function generatePassword() {
 // Button click event listener
 const generateButton = document.getElementById('generate-btn');
 generateButton.addEventListener('click', generatePassword);
+
