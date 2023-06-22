@@ -1,43 +1,59 @@
-var emailEl = document.querySelector("#email");
-var phoneEl = document.querySelector("#phone");
-var submitEl = document.querySelector("#submit");
+// Get DOM elements
+const passwordDisplay = document.getElementById('password');
+const copyBtn = document.getElementById('copy-btn');
+const lengthInput = document.getElementById('length');
+const lowercaseCheckbox = document.getElementById('lowercase');
+const uppercaseCheckbox = document.getElementById('uppercase');
+const numericCheckbox = document.getElementById('numeric');
+const specialCheckbox = document.getElementById('special');
+const generateBtn = document.getElementById('generate-btn');
 
-function generatePassword(email, phone, type, length) {
-  // Remove any non-alphanumeric characters from the email and phone
-  email = email.replace(/[^a-zA-Z0-9]/g, '');
-  phone = phone.replace(/[^a-zA-Z0-9]/g, '');
+// Character sets
+const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const numericChars = '0123456789';
+const specialChars = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
 
-  // Generate a password using a combination of email and phone
-  var password = email.slice(0, 3) + phone.slice(-3);
+// Generate password
+function generatePassword() {
+  const length = lengthInput.value;
+  const includeLowercase = lowercaseCheckbox.checked;
+  const includeUppercase = uppercaseCheckbox.checked;
+  const includeNumeric = numericCheckbox.checked;
+  const includeSpecial = specialCheckbox.checked;
 
-  var charset = '';
-  if (type === 'lower') {
-    charset = 'abcdefghijklmnopqrstuvwxyz';
-  } else if (type === 'upper') {
-    charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  } else if (type === 'special') {
-    charset = '!@#$%^&*()';
-  } else if (type === 'number') {
-    charset = '0123456789';
+  let charSet = '';
+
+  if (includeLowercase) {
+    charSet += lowercaseLetters;
+    console.log('Lowercase characters included');
   }
 
-  while (password.length < length) {
-    var randomChar = charset[Math.floor(Math.random() * charset.length)];
-    password += randomChar;
+  if (includeUppercase) {
+    charSet += uppercaseLetters;
+    console.log('Uppercase characters included');
   }
 
-  return password;
+  if (includeNumeric) {
+    charSet += numericChars;
+    console.log('Numeric characters included');
+  }
+
+  if (includeSpecial) {
+    charSet += specialChars;
+    console.log('Special characters included');
+  }
+
+  let password = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charSet.length);
+    password += charSet[randomIndex];
+  }
+
+  console.log('Generated Password:', password);
+  passwordDisplay.value = password;
 }
 
-function createPassword(event) {
-  event.preventDefault();
-  var email = emailEl.value;
-  var phone = phoneEl.value;
-  var type = document.querySelector("#password-type").value;
-  var length = parseInt(document.querySelector("#password-length").value);
-  var password = generatePassword(email, phone, type, length);
-
-  document.querySelector("#generated-password").textContent = password;
-}
-
-submitEl.addEventListener("click", createPassword);
+// Event listeners
+generateBtn.addEventListener('click', generatePassword);
